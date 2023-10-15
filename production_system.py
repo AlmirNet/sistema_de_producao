@@ -7,7 +7,7 @@ cursor = conn.cursor()
 def add_production_order(product_name, quantity, delivery_date):
     try:
         # Verificar disponibilidade de materiais
-        if not ckeck_material_availability(product_name, quantity):
+        if not check_material_availability(product_name, quantity):
             print("Não há materiais suficientes para produzir esta ordem.")
             return
         
@@ -30,10 +30,10 @@ def list_production_orders():
             print("Data de Entrega:", order[3])
             print("Status", order[4])
             print("\n")
-        else:
+    else:
             print("Nenhuma ordem de produção encontrda.")
 
-def ckeck_material_availability(product_name, quantity):
+def check_material_availability(product_name, quantity):
     # Implementando a lógica para Verificar a disponibilidade de materiais.
     # Retornando True se houver materiais suficientes, False caso contrário.
     return True
