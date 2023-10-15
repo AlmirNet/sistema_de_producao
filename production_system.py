@@ -45,3 +45,20 @@ def update_order_status(order_id, status):
         print("Status ordem de produção atualizado com sucesso.")
     except Exception as e:
         print("Erro ao atualizar o status de produção:", str(e))
+
+def generate_production_report():
+    cursor.execute("SELECT * FROM production_orders WHERE status = 'Em andamento'")
+    in_progress = cursor.fetchall()
+    cursor.execute("SELECT * FROM production_orders WHERE status = 'Concluída'")
+    completed = cursor.fetchall()
+
+    print("Ordens em andamento:")
+    for order in in_progress:
+        print(f"ID: {order[0]}, Produto: {order[1]}, Quantidade: {order[2]}")
+
+    print("\nOrdens concluídas:")
+    for order in completed:
+        print(f"ID: {order[0]}, Produto: {order[1]}, Quantidade: {order[2]}")
+
+if __name__ == '__main__':
+    while
