@@ -12,7 +12,7 @@ def add_production_order(product_name, quantity, delivery_date):
             return
         
         # Inserir a ordem no banco de dados
-        cursor.execute("INSERIR INTO production_orders (product_name, quantity, delivery_date, status) VALUE (?, ?, ?, ?)",(product_name, quantity, delivery_date, "Em andamento"))
+        cursor.execute("INSERT INTO production_orders (product_name, quantity, delivery_date, status) VALUES (?, ?, ?, ?)",(product_name, quantity, delivery_date, "Em andamento"))
 
         conn.commit()
         print("Ordem de produção adicionada com sucesso.")
@@ -20,7 +20,7 @@ def add_production_order(product_name, quantity, delivery_date):
         print("Erro ao adicionar a ordem de produção:", str(e))
 
 def list_production_orders():
-    cursor.excecute("SELECT * FROM production_orders")
+    cursor.execute("SELECT * FROM production_orders")
     orders = cursor.fetchall()
     if orders:
         for order in orders:
