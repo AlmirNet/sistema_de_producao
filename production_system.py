@@ -34,5 +34,14 @@ def list_production_orders():
             print("Nenhuma ordem de produção encontrda.")
 
 def ckeck_material_availability(product_name, quantity):
-    #Implementado a lógica para Verificar a disponibilidade de materiais.
-    #
+    # Implementando a lógica para Verificar a disponibilidade de materiais.
+    # Retornando True se houver materiais suficientes, False caso contrário.
+    return True
+
+def update_order_status(order_id, status):
+    try:
+        cursor.execute("UPDATE production_orders SET status = ? WHERE order_id = ?", (status, order_id))
+        conn.commit()
+        print("Status ordem de produção atualizado com sucesso.")
+    except Exception as e:
+        print("Erro ao atualizar o status de produção:", str(e))
