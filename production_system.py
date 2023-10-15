@@ -61,4 +61,32 @@ def generate_production_report():
         print(f"ID: {order[0]}, Produto: {order[1]}, Quantidade: {order[2]}")
 
 if __name__ == '__main__':
-    while
+    while True:
+        print("\nSistema de Gerenciamento de Ordens de Produção")
+        print("1. Adicionar Ordem de Produção")
+        print("2. Listar Ordens de Produção")
+        print('3. Atualizar Status da Ordem de Produção')
+        print("4. Gerer Relatório de Produção")
+        print("5. Sair")
+
+        choice = input("Escolha uma opção: ")
+
+        if choice == "1":
+            product_name = input("Nome do produto: ")
+            quantity = int(input("Quantidade: "))
+            delivery_date = input("Data de entrega (AAAA-MM-DD): ")
+            add_production_order(product_name, quantity, delivery_date)
+        elif choice == "2":
+            list_production_orders()
+        elif choice =='3':
+            order_id = int(input("ID da ordem de produção: "))
+            status = input("Novo status (Em andamento/Concluída): ")
+            update_order_status(order_id, status)
+        elif choice == "4":
+            generate_production_report()
+        elif choice =="5":
+            conn.close()
+            print("Saindo do sistema.")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
